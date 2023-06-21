@@ -4,33 +4,48 @@ const fastify = require('fastify')({
 })
 const { seedDocs, GetAll, Get, Update, Create } = require('./services/elasticServices');
 
+//  JSON Schema to validate input data before upload to database
+const validateSchema = {
+    schema: {
+        body: {
+            type: 'object',
+            properties: {
+                id: { type: 'number' },
+                title: { type: 'string' },
+                author: { type: 'string' },
+                publishedDate: { type: 'string' },
+                description: { type: 'string' },
+                price: { type: 'number' }
+            }
+        }
+    }
+}
 
 fastify.get('/', async (rq, rs) => {
-    return await GetAll().then(docs => {
-        docs.hits.hits.forEach(source => {
-            console.log(source._source)
-        })
+    var docs = await GetAll();
+    docs.hits.hits.forEach(source => {
+        console.log(source._source)
     });
+    return docs;
 })
 
 fastify.get('/:id', async (rq, rs) => {
     var id = parseInt(rq.params['id']);
-    return await Get(id).then(doc => {
-        doc.hits.hits.forEach(source => {
-            console.log(source._source);
-        });
-    })
-})
+    var doc = await Get(id);
+    doc.hits.hits.forEach(source => {
+        console.log(source._source);
+    });
+    return doc;
+});
 
-fastify.put('/:id', async (rq, rs) => {
+fastify.put('/:id', validateSchema, async (rq, rs) => {
     var id = rq.params['id'];
     var doc = rq.body;
-    await Update(id, doc).then(doc => {
-        console.log(doc.hits);
-    });
+    console.log('_________________________ Update : ',doc);
+    await Update(id, doc)
 })
 
-fastify.post('/', async (rq, rs) => {
+fastify.post('/', validateSchema, async (rq, rs) => {
     console.log(rq.body);
     await Create(rq.body);
     console.log('_________________________ (Frome App.js) Doc is created');

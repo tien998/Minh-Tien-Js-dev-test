@@ -60,7 +60,7 @@ async function Update(id, doc) {
         }
     })
     try {
-        updateDoc.hits.hits[0]._id
+        var docID = updateDoc.hits.hits[0]._id
         await client.index({
             index: indexName,
             id: docID,
