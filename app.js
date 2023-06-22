@@ -23,18 +23,14 @@ const validateSchema = {
 
 fastify.get('/', async (rq, rs) => {
     var docs = await GetAll();
-    docs.hits.hits.forEach(source => {
-        console.log(source._source)
-    });
+    console.log('___________ GetBooks: ', docs);
     return docs;
 })
 
 fastify.get('/:id', async (rq, rs) => {
     var id = parseInt(rq.params['id']);
     var doc = await Get(id);
-    doc.hits.hits.forEach(source => {
-        console.log(source._source);
-    });
+    console.log('___________ GetBooks: ', doc);
     return doc;
 });
 

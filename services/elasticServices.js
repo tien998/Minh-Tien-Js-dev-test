@@ -17,25 +17,35 @@ var client = new Client({
 var indexName = 'bookstore';
 
 async function GetAll() {
-    return await client.search(
+    var rsData = [];
+    await client.search(
         {
             index: indexName,
             query: {
                 match_all: {}
             }
         }
-    );
+    ).then(rs => rs.hits.hits.forEach(i => {
+        rsData.push(i._source);
+    }));
+    return rsData;
 }
 
 async function Get(id) {
-    return await client.search({
-        index: indexName,
-        query: {
-            match: {
-                "id": id
+    var rsData = [];
+    await client.search(
+        {
+            index: indexName,
+            query: {
+                match: {
+                    "id": id
+                }
             }
         }
-    })
+    ).then(rs => rs.hits.hits.forEach(i => {
+        rsData.push(i._source);
+    }));
+    return rsData;
 }
 
 async function Create(docs) {
@@ -46,7 +56,7 @@ async function Create(docs) {
         })
     }
     catch (err) {
-        console.log('_________________________ (Frome elasticServices.js) Creat doc Failed ', err);
+        console.log('________________________ (Frome elasticServices.js) Creat doc Failed ', err);
     }
 }
 
