@@ -1,5 +1,6 @@
 # js-dev-test
  ### Thông tin phiên bản:
+    fastify: last version
     nodeJS: 18.16.0
     @elastic/elasticsearch: 8.8.1
 
@@ -19,7 +20,7 @@
  ### Giải thích dự án:
     API được định tuyến (Routing) tại file 'app.js'gồm các phương thức GET, PUT, POST. 
     Các lệnh thao tác và thông tin kết nối với Elastic được đặt trong `services/elasticService.js` và được gọi bởi các phương thức trong `app.js`
-    Dữ liệu trước khi được POST hoặc PUT lên server sẽ được xác thực tính hợp lệ bằng JSON Schema được cấu hình tại dòng 7 file `app.js` như sau:
+    Dữ liệu được xác thực tính hợp lệ bằng JSON Schema trước khi POST hoặc PUT lên server được cấu hình tại dòng 7 file `app.js` như sau:
     <code>
     const validateSchema = {
     schema: {

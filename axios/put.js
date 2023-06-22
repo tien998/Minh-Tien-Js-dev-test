@@ -1,6 +1,6 @@
 const { Axios, default: axios } = require('axios');
 
-axios.put('http://127.0.0.1:3000/2', {
+axios.put('http://127.0.0.1:3000/book/2', {
     'id': '2',
     'title': 'update2',
     'author': 'Harper Lee',

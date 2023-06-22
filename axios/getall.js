@@ -1,6 +1,6 @@
 const { Axios, default: axios } = require('axios');
 
-axios.get('http://127.0.0.1:3000/')
+axios.get('http://127.0.0.1:3000/book')
     .then(rs => {
         console.log(`GetAll:   ${rs.statusText}`, rs.status)
     })

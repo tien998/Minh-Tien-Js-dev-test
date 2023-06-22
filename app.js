@@ -21,27 +21,27 @@ const validateSchema = {
     }
 }
 
-fastify.get('/', async (rq, rs) => {
+fastify.get('/book', async (rq, rs) => {
     var docs = await GetAll();
     console.log('___________ GetBooks: ', docs);
     return docs;
 })
 
-fastify.get('/:id', async (rq, rs) => {
+fastify.get('/book/:id', async (rq, rs) => {
     var id = parseInt(rq.params['id']);
     var doc = await Get(id);
     console.log('___________ GetBooks: ', doc);
     return doc;
 });
 
-fastify.put('/:id', validateSchema, async (rq, rs) => {
+fastify.put('/book/:id', validateSchema, async (rq, rs) => {
     var id = rq.params['id'];
     var doc = rq.body;
     console.log('_________________________ Update : ',doc);
     await Update(id, doc)
 })
 
-fastify.post('/', validateSchema, async (rq, rs) => {
+fastify.post('/book', validateSchema, async (rq, rs) => {
     console.log(rq.body);
     await Create(rq.body);
     console.log('_________________________ (Frome App.js) Doc is created');
