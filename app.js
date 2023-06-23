@@ -60,7 +60,7 @@ fastify.put('/seedDocs', async (rq, rs) => {
 
 const start = async () => {
     try {
-        await fastify.listen({ port: 3000 });
+        await fastify.listen({ port: 3001 });
     }
     catch (error) {
         fastify.log.error(error);

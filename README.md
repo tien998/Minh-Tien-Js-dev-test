@@ -7,8 +7,8 @@
  ### Khởi chạy:
     Thay đổi thông tin kết nối Elastic Server tại `services/elasticService.js` các dòng 4:8
     `node app.js` khởi chạy chương trình
-    API được truy cập qua `http://localhost:3000/book`
-    Thêm dữ liệu mẫu bằng cách truy cập `http://localhost:3000/seedDocs` hoặc chạy lệnh `node axios/seedDocs.js` 
+    API được truy cập qua `http://localhost:3001/book`
+    Thêm dữ liệu mẫu bằng cách truy cập `http://localhost:3001/seedDocs` hoặc chạy lệnh `node axios/seedDocs.js` 
 
  ### Kiểm thử bằng Axios:
     Trong thư mục dự án, có thể dùng Axios để kiểm thử API bằng các lệnh sau, xem kết quả trả về ở terminal
