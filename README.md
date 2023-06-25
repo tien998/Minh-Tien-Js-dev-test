@@ -8,7 +8,9 @@
  ### Khởi chạy:
 
    ### Node:
+   
    NextJS được đặt trong dự án như một submodule, để clone dự án chứa cả NextJS, xin hãy chạy lệnh sau:
+
     git clone --recurse-submodules  https://github.com/tien998/js-dev-test
 
    Thay đổi thông tin kết nối Elastic Server tại `services/elasticService.js` các dòng 4:8
@@ -17,7 +19,9 @@
    Thêm dữ liệu mẫu bằng cách truy cập `http://localhost:3001/seedDocs` hoặc chạy lệnh `node axios/seedDocs.js` 
 
    ### React:
-   Để đảm bảo NextJS chạy có thể khởi chạy đúng, xin hãy đảm bảo fastify và elastic đã khởi chạy 
+
+   Để đảm bảo NextJS chạy có thể khởi chạy đúng, xin hãy đảm bảo fastify và elastic đã khởi chạy
+   
    Vào thư mục `Book_app_NextJS` thực thi các lệnh sau:
 
      npm install
@@ -31,7 +35,7 @@
 
  ### Kiểm thử bằng Axios:
    Trong thư mục dự án, có thể dùng Axios để kiểm thử API bằng các lệnh sau, xem kết quả trả về ở terminal
-   
+
     `node axios/getall.js ` Lấy toàn bộ dữ liệu
     `node axios/get.js ` Lấy dữ liệu dựa trên 1 id cụ thể, có thể chỉnh sửa tham số id trong `axios/get.js`
     `node axios/put.js ` Sửa tài liệu dựa trên id cụ thể, có thể chính sửa id và giá trị trong tại liệu trong `axios/put.js`
