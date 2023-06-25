@@ -8,14 +8,17 @@
  ### Khởi chạy:
 
    ### Node:
-   
+
    NextJS được đặt trong dự án như một submodule, để clone dự án chứa cả NextJS, xin hãy chạy lệnh sau:
 
     git clone --recurse-submodules  https://github.com/tien998/js-dev-test
 
    Thay đổi thông tin kết nối Elastic Server tại `services/elasticService.js` các dòng 4:8
-   Chạy lệnh`node app.js` khởi chạy chương trình
+
+    Chạy lệnh`node app.js` khởi chạy chương trình
+    
    API được truy cập qua `http://localhost:3001/book`
+   
    Thêm dữ liệu mẫu bằng cách truy cập `http://localhost:3001/seedDocs` hoặc chạy lệnh `node axios/seedDocs.js` 
 
    ### React:
@@ -29,8 +32,11 @@
      npm run start
 
    NextJS khởi chạy và lắng nghe ở `http://localhost:3000/`
-   Chọn cuốn sách muốn xem chi tiết trong danh sách sách và có thể viết bình luận.
+
+   Chọn cuốn sách muốn xem chi tiết trong danh sách sách và có thể viết bình luận
+
    Bình luận sách sử dụng socket.io để gửi và hiển thị bình luận theo thời gian thực
+
    Nội dung bình luận tạm thời được lưu vào 1 mảng trên Fastify, em sẽ tiếp tục cập nhật thêm tính năng cho bình luận lưu ở Elastics
 
  ### Kiểm thử bằng Axios:
@@ -43,6 +49,7 @@
     
  ### Giải thích NodeJS:
    API được định tuyến (Routing) tại file 'app.js'gồm các phương thức GET, PUT, POST. 
+
    Các lệnh thao tác và thông tin kết nối với Elastic được đặt trong `services/elasticService.js` và được gọi bởi các phương thức trong `app.js`
 
    Dữ liệu được xác thực tính hợp lệ bằng JSON Schema trước khi POST hoặc PUT lên server được cấu hình tại dòng 7 file `app.js` như sau:
