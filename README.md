@@ -17,17 +17,21 @@
    Thêm dữ liệu mẫu bằng cách truy cập `http://localhost:3001/seedDocs` hoặc chạy lệnh `node axios/seedDocs.js` 
 
    ### React:
-   Truy cập vào thư mục `Book_app_NextJS`
-   Để đảm bảo NextJS chạy có thể khởi chạy, xin hãy đảm bảo fastify và elastic đã khởi chạy và tại Nextjs đã thực thi các lệnh sau:
+   Để đảm bảo NextJS chạy có thể khởi chạy đúng, xin hãy đảm bảo fastify và elastic đã khởi chạy 
+   Vào thư mục `Book_app_NextJS` thực thi các lệnh sau:
+
      npm install
-     npm run build 
-   Chạy lệnh ` npm run start` để NextJS khởi chạy và lắng nghe ở `http://localhost:3000/`
+     npm run build
+     npm run start
+
+   NextJS khởi chạy và lắng nghe ở `http://localhost:3000/`
    Chọn cuốn sách muốn xem chi tiết trong danh sách sách và có thể viết bình luận.
    Bình luận sách sử dụng socket.io để gửi và hiển thị bình luận theo thời gian thực
    Nội dung bình luận tạm thời được lưu vào 1 mảng trên Fastify, em sẽ tiếp tục cập nhật thêm tính năng cho bình luận lưu ở Elastics
 
  ### Kiểm thử bằng Axios:
    Trong thư mục dự án, có thể dùng Axios để kiểm thử API bằng các lệnh sau, xem kết quả trả về ở terminal
+   
     `node axios/getall.js ` Lấy toàn bộ dữ liệu
     `node axios/get.js ` Lấy dữ liệu dựa trên 1 id cụ thể, có thể chỉnh sửa tham số id trong `axios/get.js`
     `node axios/put.js ` Sửa tài liệu dựa trên id cụ thể, có thể chính sửa id và giá trị trong tại liệu trong `axios/put.js`
