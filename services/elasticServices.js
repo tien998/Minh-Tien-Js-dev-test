@@ -5,7 +5,7 @@ var client = new Client({
     node: 'https://127.0.0.1:9200',
     auth: {
         username: 'elastic',
-        password: 'dAF2D0NVU0_uhOopx_5p',
+        password: 'cba5fw4=xAtYtUpE=YaZ',
     },
     tls: {
         rejectUnauthorized: false

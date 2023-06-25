@@ -21,41 +21,53 @@ const validateSchema = {
     }
 }
 
+
+// Enable socket.io to display comments
+const { Server } = require('socket.io');
+
+const io = new Server(fastify.server, {
+    cors: {
+        origin: 'http://localhost:3000',
+        methods: ['GET', 'POST']
+    }
+});
+
+var mesArr = [];
+
+io.on('connection', socket => {
+    socket.on('message', mes => {
+        mesArr.push(mes.toString());
+        socket.emit('message', mesArr)
+    })
+    socket.emit('message', mesArr)
+});
+
+
 fastify.get('/book', async (rq, rs) => {
     var docs = await GetAll();
-    console.log('___________ GetBooks: ', docs);
     return docs;
 })
 
 fastify.get('/book/:id', async (rq, rs) => {
     var id = parseInt(rq.params['id']);
     var doc = await Get(id);
-    console.log('___________ GetBooks: ', doc);
     return doc;
 });
 
 fastify.put('/book/:id', validateSchema, async (rq, rs) => {
     var id = rq.params['id'];
     var doc = rq.body;
-    console.log('_________________________ Update : ',doc);
     await Update(id, doc)
 })
 
 fastify.post('/book', validateSchema, async (rq, rs) => {
     console.log(rq.body);
     await Create(rq.body);
-    console.log('_________________________ (Frome App.js) Doc is created');
 })
 
 // Seed data
 fastify.put('/seedDocs', async (rq, rs) => {
-    try {
-        await seedDocs();
-        console.log('__________Seed success!')
-    }
-    catch (err) {
-        console, log('__________Seed false:', err)
-    }
+    await seedDocs();
 })
 
 const start = async () => {
