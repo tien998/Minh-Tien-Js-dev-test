@@ -13,12 +13,12 @@
 
     git clone --recurse-submodules  https://github.com/tien998/js-dev-test
 
-   Thay đổi thông tin kết nối Elastic Server tại `services/elasticService.js` các dòng 4:8
+   Để Fastify có thể khởi chạy thành công không bị lỗi kết nối elastic, xin hãy thay đổi thông tin kết nối đến Elastic Server phù hợp với máy chủ đang chạy tại `services/elasticService.js` các dòng 4:8 
 
     Chạy lệnh`node app.js` khởi chạy chương trình
     
    API được truy cập qua `http://localhost:3001/book`
-   
+
    Thêm dữ liệu mẫu bằng cách truy cập `http://localhost:3001/seedDocs` hoặc chạy lệnh `node axios/seedDocs.js` 
 
    ### React:
