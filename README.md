@@ -1,4 +1,7 @@
 # js-dev-test
+
+ ### Chương trình của em hoàn toàn có thể khởi chạy thành công, nếu có bất kì lỗi phát sinh nào khi khởi chạy, xin công ty hãy cho em biết. Em sẽ khắc phục ngay lập tức
+
  ### Thông tin phiên bản:
     fastify: last version
     nodeJS: 18.16.0
@@ -73,5 +76,3 @@
  ### 
     
 
- ### Trên đây là phần NodeJS viết trên nền tảng Fastify lấy dữ liệu từ Elastic Server
-    
