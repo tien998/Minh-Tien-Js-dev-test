@@ -1,6 +1,6 @@
 # js-dev-test
 
- ### Chương trình của em hoàn toàn có thể khởi chạy thành công, nếu có bất kì lỗi phát sinh nào khi khởi chạy, xin công ty hãy cho em biết. Em sẽ khắc phục ngay lập tức
+ ### Chương trình hoàn toàn có thể khởi chạy thành công, nếu có bất kì lỗi phát sinh nào khi khởi chạy, xin công ty hãy cho em biết. Em sẽ khắc phục ngay lập tức
  
   Sđt/zalo: 0395091462
 
@@ -16,14 +16,16 @@
     @elastic/elasticsearch: 8.8.1
 
  ### Khởi chạy:
-
-   ### Node:
+   
+   ### Lưu ý:
 
    NextJS được đặt trong dự án như một submodule, để clone dự án chứa cả NextJS, xin hãy chạy lệnh sau:
 
     git clone --recurse-submodules  https://github.com/tien998/js-dev-test
 
-   Để Fastify có thể khởi chạy thành công không bị lỗi kết nối elastic, xin hãy thay đổi thông tin kết nối đến Elastic Server phù hợp với máy chủ đang chạy tại `services/elasticService.js` các dòng 4:8 
+   ### Node:
+
+   Để Fastify có thể khởi chạy thành công không bị lỗi kết nối elastic, xin hãy thay đổi thông tin kết nối đến Elastic phù hợp với máy chủ đang chạy tại `services/elasticClient.js` các dòng 4:8 
 
     Chạy lệnh`node app.js` khởi chạy chương trình
     
@@ -58,11 +60,11 @@
     `node axios/post.js ` Tạo tài liệu mới trên Elastic có thể chỉnh sửa giá trị tài liệu trong `axios/post.js`
     
  ### Giải thích NodeJS:
-   API được định tuyến (Routing) tại file 'app.js'gồm các phương thức GET, PUT, POST. 
+   API được định tuyến (Routing) tại file 'api_registers/book_api.js' và được đăng ký vào fastify bằng phương thức register `fastify.register(book_api);` file app.js dòng 29
 
-   Các lệnh thao tác và thông tin kết nối với Elastic được đặt trong `services/elasticService.js` và được gọi bởi các phương thức trong `app.js`
+   Các lệnh thao tác và thông tin kết nối với Elastic được đặt trong `services/bookServices.js` và được gọi bởi các phương thức trong `book_api.js`
 
-   Dữ liệu được xác thực tính hợp lệ bằng JSON Schema trước khi POST hoặc PUT lên server được cấu hình tại dòng 7 file `app.js` như sau:
+   Dữ liệu được xác thực tính hợp lệ bằng JSON Schema trước khi POST hoặc PUT lên server được cấu hình tại dòng 5 file `services/bookServices.js` như sau:
     
     const validateSchema = {
     schema: {
@@ -79,7 +81,5 @@
         }
       } 
     }
-
- ### 
     
 

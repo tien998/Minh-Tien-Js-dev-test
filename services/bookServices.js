@@ -1,17 +1,4 @@
-const { Client } = require('@elastic/elasticsearch');
-
-
-var client = new Client({
-    node: 'https://127.0.0.1:9200',
-    auth: {
-        username: 'elastic',
-        password: 'cba5fw4=xAtYtUpE=YaZ',
-    },
-    tls: {
-        rejectUnauthorized: false
-    }
-})
-
+const client = require('./elasticClient')
 
 
 var indexName = 'bookstore';
