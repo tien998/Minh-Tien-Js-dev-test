@@ -2,11 +2,11 @@
 
  ### Chương trình hoàn toàn có thể khởi chạy thành công, nếu có bất kì lỗi phát sinh nào khi khởi chạy, xin công ty hãy cho em biết. Em sẽ khắc phục ngay lập tức
  
-  Sđt/zalo: 0395091462
+    Sđt/zalo: 0395091462
 
-  email: tien998@gmail.com
+    email: tien998@gmail.com
 
-  Vũ Minh Tiến
+    Vũ Minh Tiến
   
 
  ### Thông tin phiên bản:
@@ -25,7 +25,7 @@
 
    ### Node:
 
-   Để Fastify có thể khởi chạy thành công không bị lỗi kết nối elastic, xin hãy thay đổi thông tin kết nối đến Elastic phù hợp với máy chủ đang chạy tại `services/elasticClient.js` các dòng 4:8 
+   Để Fastify có thể khởi chạy thành công không bị lỗi kết nối elastic, xin hãy thay đổi thông tin kết nối đến Elastic phù hợp với máy chủ đang chạy (địa chỉ cổng kết nối, username, password ) tại `services/elasticClient.js` các dòng 4:8 
 
     Chạy lệnh`node app.js` khởi chạy chương trình
     
