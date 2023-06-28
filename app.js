@@ -2,32 +2,21 @@
 const fastify = require('fastify')({
     logger: true
 })
+const io = require('./services/socket.io_service')
+const { createCmtIndex } = require('./services/commentServices');
+const { seedBookDocs } = require('./services/bookServices')
 
-
-
-// Enable socket.io to display comments
-const { Server } = require('socket.io');
 const book_api = require('./api_registers/book_api');
 
-const io = new Server(fastify.server, {
-    cors: {
-        origin: 'http://localhost:3000',
-        methods: ['GET', 'POST']
-    }
-});
-
-var mesArr = [];
-
-io.on('connection', socket => {
-    socket.on('message', mes => {
-        mesArr.push(mes.toString());
-        socket.emit('message', mesArr)
-    })
-    socket.emit('message', mesArr)
-});
+fastify.register(io);
 
 fastify.register(book_api);
 
+// Seed data
+fastify.put('/seedDocs', async (rq, rs) => {
+    await seedBookDocs();
+    await createCmtIndex();
+});
 
 const start = async () => {
     try {

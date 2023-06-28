@@ -69,7 +69,7 @@ async function Update(id, doc) {
     }
 }
 
-async function seedDocs() {
+async function seedBookDocs() {
     await createIndex(indexName);
     await indexDocument(indexName);
 }
@@ -77,7 +77,7 @@ async function seedDocs() {
 async function createIndex(indexName) {
     try {
         const response = await client.indices.create({ index: indexName });
-        console.log('Index created:', response);
+        console.log(`Index created: ${indexName}`, response);
     } catch (error) {
         console.error('Error creating index:', error);
     }
@@ -163,4 +163,4 @@ async function indexDocument(indexName) {
 
 }
 
-module.exports = { seedDocs, GetAll, Get, Update, Create };
+module.exports = { seedBookDocs, GetAll, Get, Update, Create };

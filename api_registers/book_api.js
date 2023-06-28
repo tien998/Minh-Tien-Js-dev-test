@@ -1,5 +1,6 @@
 
-const { seedDocs, GetAll, Get, Update, Create } = require('../services/bookServices')
+const { GetAll, Get, Update, Create } = require('../services/bookServices');
+
 
 //  JSON Schema to validate input data before upload to database
 const validateSchema = {
@@ -41,10 +42,6 @@ const book_api = async (fastify) => {
         console.log(rq.body);
         await Create(rq.body);
     })
-
-    // Seed data
-    fastify.put('/seedDocs', async (rq, rs) => {
-        await seedDocs();
-    })
+   
 }
 module.exports = book_api;

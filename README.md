@@ -49,7 +49,7 @@
 
    Bình luận sách sử dụng socket.io để gửi và hiển thị bình luận theo thời gian thực
 
-   Nội dung bình luận tạm thời được lưu vào 1 mảng trên Fastify, em sẽ tiếp tục cập nhật thêm tính năng cho bình luận lưu ở Elastics
+   Nội dung bình luận được lưu vào Elastics trong Index "comment"
 
  ### Kiểm thử bằng Axios:
    Trong thư mục dự án, có thể dùng Axios để kiểm thử API bằng các lệnh sau, xem kết quả trả về ở terminal
@@ -60,26 +60,11 @@
     `node axios/post.js ` Tạo tài liệu mới trên Elastic có thể chỉnh sửa giá trị tài liệu trong `axios/post.js`
     
  ### Giải thích NodeJS:
-   API được định tuyến (Routing) tại file 'api_registers/book_api.js' và được đăng ký vào fastify bằng phương thức register `fastify.register(book_api);` file app.js dòng 29
 
-   Các lệnh thao tác và thông tin kết nối với Elastic được đặt trong `services/bookServices.js` và được gọi bởi các phương thức trong `book_api.js`
+   API được định tuyến (Routing) tại file `api_registers/book_api.js` và được đăng ký vào fastify bằng phương thức register `fastify.register(book_api);` file `app.js` dòng 29
 
-   Dữ liệu được xác thực tính hợp lệ bằng JSON Schema trước khi POST hoặc PUT lên server được cấu hình tại dòng 5 file `services/bookServices.js` như sau:
-    
-    const validateSchema = {
-    schema: {
-        body: {
-            type: 'object',
-            properties: {
-                id: { type: 'number' },
-                title: { type: 'string' },
-                author: { type: 'string' },
-                publishedDate: { type: 'string' },
-                description: { type: 'string' },
-                price: { type: 'number' }
-            }
-        }
-      } 
-    }
+   Dữ liệu được xác thực tính hợp lệ bằng JSON Schema trước khi POST hoặc PUT lên Elastic được cấu hình tại file `api_registers/book_api.js`  dòng 5
+
+   Các lệnh thao tác và thông tin kết nối với Elastic được đặt trong `services/bookServices.js` và được gọi bởi các phương thức trong `api_registers/book_api.js`
     
 
