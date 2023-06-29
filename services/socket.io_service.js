@@ -10,8 +10,8 @@ const io = async (fastify) => {
         }
     });
 
-    var mesArr = [];
     io.on('connection', socket => {
+        var mesArr = [];
         socket.on('message', async (mes) => {
             if (mes === {}) {
                 socket.emit('message', mesArr);
