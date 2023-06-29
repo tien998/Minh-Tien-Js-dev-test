@@ -9,16 +9,22 @@ const io = async (fastify) => {
             methods: ['GET', 'POST']
         }
     });
-    
-    var mesArr =[];
+
+    var mesArr = [];
     io.on('connection', socket => {
         socket.on('message', async (mes) => {
-            var postedMes = await PostCmt(mes);
-            mesArr.push(mes);
-            socket.emit('message', mesArr); 
+            if (mes === {}) {
+                socket.emit('message', mesArr);
+            }
+            else {
+                await PostCmt(mes);
+                mesArr.push(mes);
+                socket.emit('message', mesArr);
+                console.log('_________ message: ', mes);
+            }
         })
     });
-    
+
 }
 
 module.exports = io;

@@ -7,10 +7,13 @@ const { createCmtIndex } = require('./services/commentServices');
 const { seedBookDocs } = require('./services/bookServices')
 
 const book_api = require('./api_registers/book_api');
+const cmt_api = require('./api_registers/comment_api');
 
 fastify.register(io);
 
 fastify.register(book_api);
+
+fastify.register(cmt_api)
 
 // Seed data
 fastify.put('/seedDocs', async (rq, rs) => {
