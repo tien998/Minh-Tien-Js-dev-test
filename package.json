@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "@elastic/elasticsearch": "^8.8.1",
     "@fastify/cors": "^8.3.0",
